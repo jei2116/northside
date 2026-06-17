@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculty and Staff · Northside Charter High School · Brooklyn, NY</title>
+  <meta name="description" content="Meet the faculty and staff of Northside Charter High School. Search by name or browse by department.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Faculty Directory styles ── */
+    .directory-controls {
+      padding: 48px 0 0;
+      background: var(--off-white);
+    }
+
+    .search-bar {
+      position: relative;
+      max-width: 560px;
+      margin-bottom: 32px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 14px 20px 14px 48px;
+      border: 2px solid var(--light-gray);
+      border-radius: 50px;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      background: var(--white);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+
+    .search-bar input:focus {
+      border-color: var(--violet);
+    }
+
+    .search-bar input::placeholder {
+      color: #aaa;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      border: 2px solid #aaa;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .search-icon::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      right: -5px;
+      width: 7px;
+      height: 2px;
+      background: #aaa;
+      transform: rotate(45deg);
+      transform-origin: left;
+    }
+
+    .dept-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .dept-filter {
+      padding: 7px 16px;
+      border-radius: 50px;
+      font-family: var(--font);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid var(--light-gray);
+      background: var(--white);
+      color: var(--charcoal);
+      transition: var(--transition);
+    }
+
+    .dept-filter:hover,
+    .dept-filter.active {
+      border-color: var(--purple);
+      background: var(--purple);
+      color: var(--white);
+    }
+
+    /* Directory body */
+    .directory-body {
+      background: var(--off-white);
+      padding: 0 0 100px;
+    }
+
+    .dept-section {
+      padding-top: 64px;
+    }
+
+    .dept-section.hidden { display: none; }
+
+    .dept-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .dept-count {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--gray);
+      letter-spacing: 0.05em;
+    }
+
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .staff-card {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid transparent;
+      transition: var(--transition);
+    }
+
+    .staff-card.hidden { display: none; }
+
+    .staff-card:hover {
+      border-color: rgba(140,82,255,0.2);
+      box-shadow: 0 8px 24px rgba(60,47,89,0.08);
+    }
+
+    .staff-photo {
+      height: 160px;
+    }
+
+    .staff-photo .img-placeholder {
+      height: 100%;
+    }
+
+    .staff-info {
+      padding: 16px 18px 20px;
+    }
+
+    .staff-info h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 3px;
+    }
+
+    .staff-role {
+      font-size: 0.78rem;
+      color: #7a7a8a;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .staff-contact {
+      font-size: 0.75rem;
+      color: var(--violet);
+      display: block;
+      transition: color var(--transition);
+    }
+
+    .staff-contact:hover { color: var(--purple); }
+
+    .no-results {
+      text-align: center;
+      padding: 64px 0;
+      display: none;
+    }
+
+    .no-results p {
+      font-size: 1rem;
+      color: #7a7a8a;
+    }
+
+    .no-results strong {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 1024px) {
+      .staff-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .staff-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .staff-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo-northside.png" alt="Northside Charter High School">
+      </a>
+      <ul class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="#">Academics</a></li>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li><a href="#">Athletics</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <span class="nav-phone">(347) 390-1273</span>
+        <a href="https://nschs.schoolmint.net/signup" class="btn btn-primary" target="_blank" rel="noopener">Apply Now</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Our Team</span>
+      <h1>Faculty and Staff<br>Directory.</h1>
+      <p>
+        Northside is built on the people who show up for our students every day.
+        Search by name or browse by department below.
+      </p>
+    </div>
+  </section>
+
+  <!-- SEARCH AND FILTERS -->
+  <div class="directory-controls">
+    <div class="container">
+      <div class="search-bar">
+        <div class="search-icon"></div>
+        <input type="text" id="search-input" placeholder="Search by name or role..." autocomplete="off">
+      </div>
+      <div class="dept-filters" id="dept-filters">
+        <button class="dept-filter active" data-dept="all">All Staff</button>
+        <button class="dept-filter" data-dept="guidance">Guidance and Support</button>
+        <button class="dept-filter" data-dept="math">Mathematics</button>
+        <button class="dept-filter" data-dept="english">English and ELA</button>
+        <button class="dept-filter" data-dept="science">Science</button>
+        <button class="dept-filter" data-dept="social">Social Studies</button>
+        <button class="dept-filter" data-dept="esl">ESL</button>
+        <button class="dept-filter" data-dept="sped">Special Education</button>
+        <button class="dept-filter" data-dept="arts">Arts and Music</button>
+        <button class="dept-filter" data-dept="pe">Physical Education</button>
+        <button class="dept-filter" data-dept="career">Career Readiness</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIRECTORY -->
+  <div class="directory-body">
+    <div class="container">
+
+      <div class="no-results" id="no-results">
+        <strong>No results found.</strong>
+        <p>Try a different name or clear the search to browse all staff.</p>
+      </div>
+
+      <!-- Guidance and Support -->
+      <div class="dept-section" data-dept="guidance">
+        <div class="dept-title">
+          Guidance and Support
+          <span class="dept-count">6 staff members</span>
+        </div>
+        <div class="staff-grid">
+          <div class="staff-card" data-name="school counselor" data-role="school counselor">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>School Counselor</h4>
+              <span class="staff-role">Guidance and Support</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="college counselor" data-role="college counselor">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>College Counselor</h4>
+              <span class="staff-role">Guidance and Support</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="dean of student experience" data-role="dean">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Dean of Student Experience</h4>
+              <span class="staff-role">Guidance and Support</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="director of student life" data-role="student life">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Director of Student Life</h4>
+              <span class="staff-role">Guidance and Support</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="attendance manager" data-role="attendance">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Attendance Manager</h4>
+              <span class="staff-role">Guidance and Support</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="community engagement coordinator" data-role="community">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Community Engagement Coordinator</h4>
+              <span class="staff-role">Guidance and Support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mathematics -->
+      <div class="dept-section" data-dept="math">
+        <div class="dept-title">
+          Mathematics
+          <span class="dept-count">Department</span>
+        </div>
+        <div class="staff-grid">
+          <div class="staff-card" data-name="math academic director" data-role="academic director mathematics">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Academic Director, Mathematics</h4>
+              <span class="staff-role">Mathematics</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="mathematics teacher" data-role="math teacher">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Mathematics Teacher</h4>
+              <span class="staff-role">Mathematics</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="mathematics teacher" data-role="math teacher">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Mathematics Teacher</h4>
+              <span class="staff-role">Mathematics</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="mathematics teacher" data-role="math teacher">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Mathematics Teacher</h4>
+              <span class="staff-role">Mathematics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- English and ELA -->
+      <div class="dept-section" data-dept="english">
+        <div class="dept-title">
+          English and ELA
+          <span class="dept-count">Department</span>
+        </div>
+        <div class="staff-grid">
+          <div class="staff-card" data-name="humanities academic director" data-role="academic director humanities">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Academic Director, Humanities</h4>
+              <span class="staff-role">English and ELA</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="english teacher" data-role="english teacher ela">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>English Teacher</h4>
+              <span class="staff-role">English and ELA</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="english teacher" data-role="english teacher ela">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>English Teacher</h4>
+              <span class="staff-role">English and ELA</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="english teacher" data-role="english teacher ela">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>English Teacher</h4>
+              <span class="staff-role">English and ELA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Science -->
+      <div class="dept-section" data-dept="science">
+        <div class="dept-title">
+          Science
+          <span class="dept-count">Department</span>
+        </div>
+        <div class="staff-grid">
+          <div class="staff-card" data-name="science academic director" data-role="academic director science">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Academic Director, Science</h4>
+              <span class="staff-role">Science</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="science teacher" data-role="science teacher">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Science Teacher</h4>
+              <span class="staff-role">Science</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="science teacher" data-role="science teacher">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Science Teacher</h4>
+              <span class="staff-role">Science</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Studies -->
+      <div class="dept-section" data-dept="social">
+        <div class="dept-title">
+          Social Studies
+          <span class="dept-count">Department</span>
+        </div>
+        <div class="staff-grid">
+          <div class="staff-card" data-name="social studies teacher" data-role="social studies teacher">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Social Studies Teacher</h4>
+              <span class="staff-role">Social Studies</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="social studies teacher" data-role="social studies teacher">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Social Studies Teacher</h4>
+              <span class="staff-role">Social Studies</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="social studies teacher" data-role="social studies teacher">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Social Studies Teacher</h4>
+              <span class="staff-role">Social Studies</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESL -->
+      <div class="dept-section" data-dept="esl">
+        <div class="dept-title">
+          ESL
+          <span class="dept-count">Department</span>
+        </div>
+        <div class="staff-grid">
+          <div class="staff-card" data-name="esl teacher" data-role="esl teacher english language learner">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>ESL Teacher</h4>
+              <span class="staff-role">ESL</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="esl teacher" data-role="esl teacher english language learner">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>ESL Teacher</h4>
+              <span class="staff-role">ESL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Special Education -->
+      <div class="dept-section" data-dept="sped">
+        <div class="dept-title">
+          Special Education
+          <span class="dept-count">Department</span>
+        </div>
+        <div class="staff-grid">
+          <div class="staff-card" data-name="special education teacher" data-role="special education sped iep">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Special Education Teacher</h4>
+              <span class="staff-role">Special Education</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="special education teacher" data-role="special education sped iep">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Special Education Teacher</h4>
+              <span class="staff-role">Special Education</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="special education liaison" data-role="special education liaison sped">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Special Education Liaison</h4>
+              <span class="staff-role">Special Education</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arts and Music -->
+      <div class="dept-section" data-dept="arts">
+        <div class="dept-title">
+          Arts and Music
+          <span class="dept-count">Department</span>
+        </div>
+        <div class="staff-grid">
+          <div class="staff-card" data-name="arts teacher" data-role="arts teacher visual arts">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Arts Teacher</h4>
+              <span class="staff-role">Arts and Music</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="music teacher" data-role="music teacher">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Music Teacher</h4>
+              <span class="staff-role">Arts and Music</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Physical Education -->
+      <div class="dept-section" data-dept="pe">
+        <div class="dept-title">
+          Physical Education
+          <span class="dept-count">Department</span>
+        </div>
+        <div class="staff-grid">
+          <div class="staff-card" data-name="physical education teacher" data-role="pe teacher physical education athletics">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Physical Education Teacher</h4>
+              <span class="staff-role">Physical Education</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="physical education teacher" data-role="pe teacher physical education athletics">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Physical Education Teacher</h4>
+              <span class="staff-role">Physical Education</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Career Readiness -->
+      <div class="dept-section" data-dept="career">
+        <div class="dept-title">
+          Career Readiness
+          <span class="dept-count">Department</span>
+        </div>
+        <div class="staff-grid">
+          <div class="staff-card" data-name="career readiness teacher" data-role="career readiness internship pathway">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Career Readiness Teacher</h4>
+              <span class="staff-role">Career Readiness</span>
+            </div>
+          </div>
+          <div class="staff-card" data-name="healthcare pathway instructor" data-role="healthcare pathway career readiness">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Healthcare Pathway Instructor</h4>
+              <span class="staff-role">Career Readiness</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/logo-northside.png" alt="Northside Charter High School">
+          <p>A free public charter high school in Brooklyn providing an enriching and innovative learning environment where students achieve postsecondary readiness.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>School</h4>
+          <ul>
+            <li><a href="about.html">About Northside</a></li>
+            <li><a href="#">Academics</a></li>
+            <li><a href="faculty.html">Faculty and Staff</a></li>
+            <li><a href="#">Athletics</a></li>
+            <li><a href="#">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Admissions</h4>
+          <ul>
+            <li><a href="admissions.html">How to Enroll</a></li>
+            <li><a href="admissions.html#open-house">Open House Dates</a></li>
+            <li><a href="#">School Lottery</a></li>
+            <li><a href="#">Family Life Guide</a></li>
+            <li><a href="#">Graduation Requirements</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li>424 Leonard Street<br>Brooklyn, NY 11222</li>
+            <li>(347) 390-1273</li>
+            <li>familyfeedback@northsidechs.org</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>2026 Northside Charter High School. All rights reserved.</span>
+        <span>Privacy Policy · Accessibility · Non-Discrimination Policy</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Department filter
+    const filters = document.querySelectorAll('.dept-filter');
+    const deptSections = document.querySelectorAll('.dept-section');
+
+    filters.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filters.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const selected = btn.dataset.dept;
+        deptSections.forEach(section => {
+          if (selected === 'all' || section.dataset.dept === selected) {
+            section.classList.remove('hidden');
+          } else {
+            section.classList.add('hidden');
+          }
+        });
+
+        // Re-run search against new visible sections
+        filterBySearch(document.getElementById('search-input').value);
+      });
+    });
+
+    // Search filter
+    function filterBySearch(query) {
+      const q = query.toLowerCase().trim();
+      const allCards = document.querySelectorAll('.staff-card');
+      let anyVisible = false;
+
+      allCards.forEach(card => {
+        const section = card.closest('.dept-section');
+        if (section && section.classList.contains('hidden')) return;
+
+        const name = (card.dataset.name || '').toLowerCase();
+        const role = (card.dataset.role || '').toLowerCase();
+        const matches = !q || name.includes(q) || role.includes(q);
+
+        card.classList.toggle('hidden', !matches);
+        if (matches) anyVisible = true;
+      });
+
+      document.getElementById('no-results').style.display = anyVisible ? 'none' : 'block';
+    }
+
+    document.getElementById('search-input').addEventListener('input', e => {
+      filterBySearch(e.target.value);
+    });
+  </script>
+
+</body>
+</html>

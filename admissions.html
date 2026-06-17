@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions · Northside Charter High School · Brooklyn, NY</title>
+  <meta name="description" content="Apply to Northside Charter High School. Free, no test required, open to all Brooklyn students. Now accepting applications for the 2026-2027 school year.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Admissions-specific styles ── */
+    .eligibility {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .eligibility .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .eligibility-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .eligibility-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .eligibility-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(140,82,255,0.1);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .eligibility-icon span {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--violet);
+      letter-spacing: 0.04em;
+    }
+
+    .eligibility-item h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 4px;
+    }
+
+    .eligibility-item p {
+      font-size: 0.88rem;
+      color: #6a6a7a;
+      line-height: 1.6;
+    }
+
+    .apply-card {
+      background: var(--purple);
+      border-radius: 24px;
+      padding: 52px 44px;
+      color: var(--white);
+      position: sticky;
+      top: 100px;
+    }
+
+    .apply-card .section-label {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .apply-card h3 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .apply-card p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.68);
+      margin-bottom: 32px;
+      line-height: 1.65;
+    }
+
+    .apply-card .btn-primary {
+      width: 100%;
+      justify-content: center;
+      font-size: 1rem;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .apply-card .btn-outline {
+      width: 100%;
+      justify-content: center;
+      font-size: 0.88rem;
+      padding: 13px;
+      margin-bottom: 28px;
+    }
+
+    .apply-contact {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+
+    .apply-contact strong {
+      color: rgba(255,255,255,0.85);
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .apply-contact a {
+      color: rgba(255,255,255,0.6);
+      transition: color var(--transition);
+    }
+
+    .apply-contact a:hover { color: var(--white); }
+
+    /* Open House */
+    .open-house-section {
+      padding: 100px 0;
+      background: var(--off-white);
+    }
+
+    .open-house-section .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .oh-dates {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 32px 0;
+    }
+
+    .oh-date {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 16px 20px;
+      border: 1px solid var(--light-gray);
+      transition: var(--transition);
+    }
+
+    .oh-date:hover {
+      border-color: var(--violet);
+      box-shadow: 0 4px 16px rgba(60,47,89,0.08);
+    }
+
+    .oh-date-num {
+      width: 48px;
+      height: 48px;
+      background: var(--purple);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .oh-date-num strong {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .oh-date-info strong {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--purple);
+      display: block;
+    }
+
+    .oh-date-info span {
+      font-size: 0.8rem;
+      color: #7a7a8a;
+    }
+
+    .oh-what {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px;
+      border: 1px solid var(--light-gray);
+    }
+
+    .oh-what h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 20px;
+    }
+
+    .oh-what ul {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .oh-what ul li {
+      font-size: 0.92rem;
+      color: var(--charcoal);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .oh-what ul li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--violet);
+      flex-shrink: 0;
+    }
+
+    /* Steps */
+    .steps-section {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .steps-section .container {
+      max-width: 800px;
+    }
+
+    .steps-header {
+      margin-bottom: 60px;
+    }
+
+    .steps-full {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-full {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0 32px;
+      position: relative;
+      padding-bottom: 48px;
+    }
+
+    .step-full:last-child { padding-bottom: 0; }
+
+    .step-full-num {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step-full-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--purple);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .step-full-line {
+      width: 2px;
+      flex: 1;
+      background: var(--light-gray);
+      margin-top: 8px;
+    }
+
+    .step-full:last-child .step-full-line { display: none; }
+
+    .step-full-body {
+      padding-top: 12px;
+    }
+
+    .step-full-body h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+
+    .step-full-body p {
+      font-size: 0.92rem;
+      color: #6a6a7a;
+      line-height: 1.65;
+      max-width: 560px;
+    }
+
+    .step-tag {
+      display: inline-block;
+      background: rgba(140,82,255,0.1);
+      color: var(--violet);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-bottom: 8px;
+    }
+
+    /* Documents */
+    .documents {
+      padding: 100px 0;
+      background: var(--off-white);
+    }
+
+    .documents-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .doc-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 28px;
+      border: 1px solid var(--light-gray);
+    }
+
+    .doc-num {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--violet);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .doc-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+
+    .doc-card p {
+      font-size: 0.85rem;
+      color: #6a6a7a;
+      line-height: 1.6;
+    }
+
+    /* FAQ */
+    .faq {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    details {
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    details:first-of-type {
+      border-top: 1px solid var(--light-gray);
+    }
+
+    summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--purple);
+      cursor: pointer;
+      list-style: none;
+      gap: 16px;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: '+';
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--violet);
+      flex-shrink: 0;
+      transition: transform var(--transition);
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      padding: 0 0 24px;
+      font-size: 0.92rem;
+      color: #6a6a7a;
+      line-height: 1.75;
+      max-width: 640px;
+    }
+
+    /* Final CTA */
+    .final-cta {
+      background: var(--purple);
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .final-cta .section-label { color: rgba(255,255,255,0.45); }
+
+    .final-cta h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .final-cta p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.68);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .final-cta-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+      .eligibility .container,
+      .open-house-section .container { grid-template-columns: 1fr; gap: 48px; }
+      .apply-card { position: static; }
+    }
+
+    @media (max-width: 768px) {
+      .documents-grid { grid-template-columns: 1fr; }
+      .step-full { grid-template-columns: 52px 1fr; gap: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo-northside.png" alt="Northside Charter High School">
+      </a>
+      <ul class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="#">Academics</a></li>
+        <li><a href="admissions.html" class="active">Admissions</a></li>
+        <li><a href="#">Athletics</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <span class="nav-phone">(347) 390-1273</span>
+        <a href="https://nschs.schoolmint.net/signup" class="btn btn-primary" target="_blank" rel="noopener">Apply Now</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Admissions</span>
+      <h1>Join the Northside<br>Knights Family.</h1>
+      <p>
+        Northside Charter High School is a free public school open to all students.
+        No test. No tuition. No barriers. We are currently accepting applications
+        for the 2026-2027 school year.
+      </p>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stat-item">
+        <strong>Free</strong>
+        <span>No Tuition Ever</span>
+      </div>
+      <div class="stat-item">
+        <strong>No Test</strong>
+        <span>No Entrance Exam</span>
+      </div>
+      <div class="stat-item">
+        <strong>Open</strong>
+        <span>To All NYC Students</span>
+      </div>
+      <div class="stat-item">
+        <strong>Sept 1</strong>
+        <span>2026-27 Start Date</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ELIGIBILITY + APPLY CARD -->
+  <section class="eligibility">
+    <div class="container">
+      <div>
+        <span class="section-label">Who Can Apply</span>
+        <h2 class="section-title">Northside is Open<br>to Every Student.</h2>
+        <p class="section-sub">
+          As a free public charter school, Northside accepts students through the
+          New York City school lottery. There are no academic requirements, entrance
+          exams, or application fees.
+        </p>
+
+        <div class="eligibility-list">
+          <div class="eligibility-item">
+            <div class="eligibility-icon"><span>NYC</span></div>
+            <div>
+              <h4>New York City Students</h4>
+              <p>Any student residing in New York City who will be entering grades 9 through 12 is eligible to apply. Priority is given to Brooklyn residents.</p>
+            </div>
+          </div>
+          <div class="eligibility-item">
+            <div class="eligibility-icon"><span>FREE</span></div>
+            <div>
+              <h4>100% Tuition-Free</h4>
+              <p>Northside is a public charter school fully funded by the state. There is no tuition, no application fee, and no hidden costs to families.</p>
+            </div>
+          </div>
+          <div class="eligibility-item">
+            <div class="eligibility-icon"><span>ALL</span></div>
+            <div>
+              <h4>All Learners Welcome</h4>
+              <p>We serve students with IEPs, English Language Learners, and students of all academic backgrounds. Northside provides the support every student needs to succeed.</p>
+            </div>
+          </div>
+          <div class="eligibility-item">
+            <div class="eligibility-icon"><span>NOW</span></div>
+            <div>
+              <h4>Currently Enrolling</h4>
+              <p>We are accepting applications for both the 2025-2026 and 2026-2027 school years. The 2026-2027 year begins September 1, 2026.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="apply-card">
+          <span class="section-label">Apply Today</span>
+          <h3>Ready to Join Northside?</h3>
+          <p>
+            Applications are submitted through SchoolMint. The process takes about
+            10 minutes and can be completed on any device.
+          </p>
+          <a href="https://nschs.schoolmint.net/signup" class="btn btn-primary" target="_blank" rel="noopener">Start Your Application</a>
+          <a href="#open-house" class="btn btn-outline">Attend an Open House First</a>
+          <div class="apply-contact">
+            <strong>Questions? Contact Admissions</strong>
+            <a href="tel:3473901273">(347) 390-1273 ext. 4172</a><br>
+            <a href="mailto:mortega@northsidechs.org">mortega@northsidechs.org</a><br>
+            Maria Ortega, Senior Director for Enrollment
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN HOUSE -->
+  <section class="open-house-section" id="open-house">
+    <div class="container">
+      <div>
+        <span class="section-label">Open House</span>
+        <h2 class="section-title">Come See Northside<br>in Action.</h2>
+        <p class="section-sub">
+          Every Saturday in May 2026, we open our doors to prospective families.
+          Tour the building, meet our staff, and hear directly from current students.
+        </p>
+
+        <div class="oh-dates">
+          <div class="oh-date">
+            <div class="oh-date-num"><strong>9</strong></div>
+            <div class="oh-date-info">
+              <strong>Saturday, May 9, 2026</strong>
+              <span>10:00 AM - 11:00 AM · 424 Leonard Street, Brooklyn</span>
+            </div>
+          </div>
+          <div class="oh-date">
+            <div class="oh-date-num"><strong>16</strong></div>
+            <div class="oh-date-info">
+              <strong>Saturday, May 16, 2026</strong>
+              <span>10:00 AM - 11:00 AM · 424 Leonard Street, Brooklyn</span>
+            </div>
+          </div>
+          <div class="oh-date">
+            <div class="oh-date-num"><strong>23</strong></div>
+            <div class="oh-date-info">
+              <strong>Saturday, May 23, 2026</strong>
+              <span>10:00 AM - 11:00 AM · 424 Leonard Street, Brooklyn</span>
+            </div>
+          </div>
+          <div class="oh-date">
+            <div class="oh-date-num"><strong>30</strong></div>
+            <div class="oh-date-info">
+              <strong>Saturday, May 30, 2026</strong>
+              <span>10:00 AM - 11:00 AM · 424 Leonard Street, Brooklyn</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="oh-what">
+        <h3>What to Expect</h3>
+        <ul>
+          <li>Guided tour of classrooms, labs, and athletic spaces</li>
+          <li>Q&amp;A with the principal and senior leadership</li>
+          <li>Student panel and testimonials</li>
+          <li>Overview of academic programs and pathways</li>
+          <li>Information about the lottery and enrollment process</li>
+          <li>On-site application assistance</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Register for Open House</a>
+        <p style="font-size:0.78rem; color:#7a7a8a; margin-top:14px;">
+          No registration required, but seats are limited. We recommend registering to guarantee your spot.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATION STEPS -->
+  <section class="steps-section">
+    <div class="container">
+      <div class="steps-header">
+        <span class="section-label">The Process</span>
+        <h2 class="section-title">How to Apply,<br>Step by Step.</h2>
+      </div>
+      <div class="steps-full">
+
+        <div class="step-full">
+          <div class="step-full-num">
+            <div class="step-full-circle">1</div>
+            <div class="step-full-line"></div>
+          </div>
+          <div class="step-full-body">
+            <span class="step-tag">Online</span>
+            <h4>Submit the Application</h4>
+            <p>Complete the free online application at nschs.schoolmint.net/signup. You will need the student's name, date of birth, address, and current school. The application takes about 10 minutes.</p>
+          </div>
+        </div>
+
+        <div class="step-full">
+          <div class="step-full-num">
+            <div class="step-full-circle">2</div>
+            <div class="step-full-line"></div>
+          </div>
+          <div class="step-full-body">
+            <span class="step-tag">Visit</span>
+            <h4>Attend an Open House or Schedule a Tour</h4>
+            <p>We strongly encourage all families to visit before committing. You can attend one of our Saturday Open Houses in May or schedule a private tour by calling (347) 390-1273 or emailing familyfeedback@northsidechs.org.</p>
+          </div>
+        </div>
+
+        <div class="step-full">
+          <div class="step-full-num">
+            <div class="step-full-circle">3</div>
+            <div class="step-full-line"></div>
+          </div>
+          <div class="step-full-body">
+            <span class="step-tag">Lottery</span>
+            <h4>The NYC School Lottery</h4>
+            <p>Northside admits students through the New York City school lottery. If there are more applicants than available seats, a random lottery is held. All applicants are treated equally regardless of academic record.</p>
+          </div>
+        </div>
+
+        <div class="step-full">
+          <div class="step-full-num">
+            <div class="step-full-circle">4</div>
+            <div class="step-full-line"></div>
+          </div>
+          <div class="step-full-body">
+            <span class="step-tag">Documents</span>
+            <h4>Submit Required Documents</h4>
+            <p>Once accepted, you will need to provide a few documents to complete enrollment. Our admissions team will contact you and walk you through each requirement. See the full document checklist below.</p>
+          </div>
+        </div>
+
+        <div class="step-full">
+          <div class="step-full-num">
+            <div class="step-full-circle">5</div>
+            <div class="step-full-line"></div>
+          </div>
+          <div class="step-full-body">
+            <span class="step-tag">Welcome</span>
+            <h4>Confirm Your Seat and Join the Knights</h4>
+            <p>Confirm your enrollment, complete onboarding, and get ready for the 2026-2027 school year beginning September 1, 2026. Welcome to Northside.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUIRED DOCUMENTS -->
+  <section class="documents">
+    <div class="container">
+      <span class="section-label">Enrollment Documents</span>
+      <h2 class="section-title">What You Will Need.</h2>
+      <p class="section-sub">
+        These documents are required to complete enrollment after acceptance.
+        Our team will guide every family through the process. Nothing is collected at the time of application.
+      </p>
+      <div class="documents-grid">
+        <div class="doc-card">
+          <span class="doc-num">Required</span>
+          <h4>Academic Transcripts</h4>
+          <p>Most recent report card or official transcripts from the student's current school. We accept unofficial copies during enrollment.</p>
+        </div>
+        <div class="doc-card">
+          <span class="doc-num">Required</span>
+          <h4>Proof of Age</h4>
+          <p>Birth certificate, passport, or any government-issued document confirming the student's date of birth.</p>
+        </div>
+        <div class="doc-card">
+          <span class="doc-num">Required</span>
+          <h4>Proof of Residency</h4>
+          <p>Two documents showing current New York City address, such as a utility bill, lease agreement, or bank statement.</p>
+        </div>
+        <div class="doc-card">
+          <span class="doc-num">Required</span>
+          <h4>Immunization Records</h4>
+          <p>Up-to-date immunization records as required by New York State law. The school nurse can assist families who need help obtaining these.</p>
+        </div>
+        <div class="doc-card">
+          <span class="doc-num">If Applicable</span>
+          <h4>IEP or 504 Plan</h4>
+          <p>If your student has an active Individualized Education Program or 504 Plan, please provide a copy so we can prepare appropriate support from day one.</p>
+        </div>
+        <div class="doc-card">
+          <span class="doc-num">If Applicable</span>
+          <h4>English Learner Records</h4>
+          <p>If your student is an English Language Learner, any existing language assessments or translation records will help us place them appropriately.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <div class="faq-header">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Frequently Asked Questions.</h2>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>Is Northside really free?</summary>
+          <p class="faq-answer">Yes. Northside Charter High School is a public charter school fully funded by the state of New York. There is no tuition, no application fee, and no required donations. Families pay nothing to attend.</p>
+        </details>
+        <details>
+          <summary>Does my child need to pass a test to get in?</summary>
+          <p class="faq-answer">No. There are no entrance exams, academic requirements, or interviews. Admission is determined by the New York City school lottery, which treats all applicants equally.</p>
+        </details>
+        <details>
+          <summary>Does my child have to live in Brooklyn?</summary>
+          <p class="faq-answer">Any student residing in New York City is eligible to apply. Brooklyn residents are given enrollment priority, but students from other boroughs may apply and are admitted on a space-available basis after the lottery.</p>
+        </details>
+        <details>
+          <summary>What grades does Northside serve?</summary>
+          <p class="faq-answer">Northside Charter High School serves students in grades 9 through 12. Students may apply to enter at any grade level, subject to seat availability.</p>
+        </details>
+        <details>
+          <summary>What is the NYC school lottery and how does it work?</summary>
+          <p class="faq-answer">The NYC school lottery is a randomized process used when the number of applicants exceeds available seats. Every applicant who submits by the deadline is entered. Winners are selected at random and notified by mail. Being waitlisted does not mean a student will not be admitted - spots often open up as families make final decisions.</p>
+        </details>
+        <details>
+          <summary>My child has a learning disability or IEP. Can they still apply?</summary>
+          <p class="faq-answer">Absolutely. Northside is fully inclusive and provides services for students with Individualized Education Programs and 504 Plans. We have special education teachers, counselors, and liaisons on staff. We encourage all families to share relevant records early so we can prepare the right supports from day one.</p>
+        </details>
+        <details>
+          <summary>My child is an English Language Learner. Is Northside a good fit?</summary>
+          <p class="faq-answer">Yes. Northside has dedicated ESL staff and instructional support for English Language Learners. We serve a diverse student population and are experienced in supporting multilingual families through the application and transition process.</p>
+        </details>
+        <details>
+          <summary>How do I schedule a private school tour?</summary>
+          <p class="faq-answer">Call us at (347) 390-1273 or email familyfeedback@northsidechs.org to schedule a private visit. You can also attend one of our Saturday Open Houses in May, which require no prior appointment.</p>
+        </details>
+        <details>
+          <summary>When does the 2026-2027 school year begin?</summary>
+          <p class="faq-answer">The 2026-2027 school year begins on September 1, 2026. Enrollment confirmation, orientation schedules, and back-to-school information will be sent to accepted families in advance.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <span class="section-label">Apply Today</span>
+      <h2>Your Child Belongs at Northside.</h2>
+      <p>Free. Supportive. College-bound. Apply in 10 minutes and secure your spot for the 2026-2027 school year.</p>
+      <div class="final-cta-btns">
+        <a href="https://nschs.schoolmint.net/signup" class="btn btn-primary" target="_blank" rel="noopener">Start the Application</a>
+        <a href="#open-house" class="btn btn-outline">Attend an Open House</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/logo-northside.png" alt="Northside Charter High School">
+          <p>A free public charter high school in Brooklyn providing an enriching and innovative learning environment where students achieve postsecondary readiness.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>School</h4>
+          <ul>
+            <li><a href="about.html">About Northside</a></li>
+            <li><a href="#">Academics</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Athletics</a></li>
+            <li><a href="#">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Admissions</h4>
+          <ul>
+            <li><a href="admissions.html">How to Enroll</a></li>
+            <li><a href="admissions.html#open-house">Open House Dates</a></li>
+            <li><a href="#">School Lottery</a></li>
+            <li><a href="#">Family Life Guide</a></li>
+            <li><a href="#">Graduation Requirements</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li>424 Leonard Street<br>Brooklyn, NY 11222</li>
+            <li>(347) 390-1273</li>
+            <li>familyfeedback@northsidechs.org</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>2026 Northside Charter High School. All rights reserved.</span>
+        <span>Privacy Policy · Accessibility · Non-Discrimination Policy</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  </script>
+
+</body>
+</html>
