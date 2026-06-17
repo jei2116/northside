@@ -7,7 +7,6 @@
   <meta name="description" content="Meet the faculty and staff of Northside Charter High School. Search by name or browse by department.">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* ── Faculty Directory styles ── */
     .directory-controls {
       padding: 48px 0 0;
       background: var(--off-white);
@@ -32,21 +31,16 @@
       transition: border-color var(--transition);
     }
 
-    .search-bar input:focus {
-      border-color: var(--violet);
-    }
-
-    .search-bar input::placeholder {
-      color: #aaa;
-    }
+    .search-bar input:focus { border-color: var(--violet); }
+    .search-bar input::placeholder { color: #aaa; }
 
     .search-icon {
       position: absolute;
       left: 18px;
       top: 50%;
       transform: translateY(-50%);
-      width: 18px;
-      height: 18px;
+      width: 17px;
+      height: 17px;
       border: 2px solid #aaa;
       border-radius: 50%;
       pointer-events: none;
@@ -57,7 +51,7 @@
       position: absolute;
       bottom: -5px;
       right: -5px;
-      width: 7px;
+      width: 6px;
       height: 2px;
       background: #aaa;
       transform: rotate(45deg);
@@ -92,16 +86,12 @@
       color: var(--white);
     }
 
-    /* Directory body */
     .directory-body {
       background: var(--off-white);
       padding: 0 0 100px;
     }
 
-    .dept-section {
-      padding-top: 64px;
-    }
-
+    .dept-section { padding-top: 64px; }
     .dept-section.hidden { display: none; }
 
     .dept-title {
@@ -146,17 +136,10 @@
       box-shadow: 0 8px 24px rgba(60,47,89,0.08);
     }
 
-    .staff-photo {
-      height: 160px;
-    }
+    .staff-photo { height: 160px; }
+    .staff-photo .img-placeholder { height: 100%; }
 
-    .staff-photo .img-placeholder {
-      height: 100%;
-    }
-
-    .staff-info {
-      padding: 16px 18px 20px;
-    }
+    .staff-info { padding: 16px 18px 20px; }
 
     .staff-info h4 {
       font-size: 0.92rem;
@@ -169,28 +152,31 @@
       font-size: 0.78rem;
       color: #7a7a8a;
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       line-height: 1.4;
     }
 
     .staff-contact {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       color: var(--violet);
       display: block;
       transition: color var(--transition);
+      word-break: break-all;
     }
 
     .staff-contact:hover { color: var(--purple); }
+
+    .staff-ext {
+      font-size: 0.74rem;
+      color: #9a9aaa;
+      display: block;
+      margin-bottom: 2px;
+    }
 
     .no-results {
       text-align: center;
       padding: 64px 0;
       display: none;
-    }
-
-    .no-results p {
-      font-size: 1rem;
-      color: #7a7a8a;
     }
 
     .no-results strong {
@@ -201,17 +187,11 @@
       margin-bottom: 8px;
     }
 
-    @media (max-width: 1024px) {
-      .staff-grid { grid-template-columns: repeat(3, 1fr); }
-    }
+    .no-results p { font-size: 1rem; color: #7a7a8a; }
 
-    @media (max-width: 768px) {
-      .staff-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 480px) {
-      .staff-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 1024px) { .staff-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 768px)  { .staff-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px)  { .staff-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -223,7 +203,13 @@
         <img src="images/logo-northside.png" alt="Northside Charter High School">
       </a>
       <ul class="nav-links">
-        <li><a href="about.html">About</a></li>
+        <li>
+          <a href="about.html">About</a>
+          <ul class="dropdown">
+            <li><a href="about.html">About Northside</a></li>
+            <li><a href="faculty.html">Faculty and Staff</a></li>
+          </ul>
+        </li>
         <li><a href="#">Academics</a></li>
         <li><a href="admissions.html">Admissions</a></li>
         <li><a href="#">Athletics</a></li>
@@ -266,10 +252,11 @@
         <button class="dept-filter" data-dept="english">English and ELA</button>
         <button class="dept-filter" data-dept="science">Science</button>
         <button class="dept-filter" data-dept="social">Social Studies</button>
+        <button class="dept-filter" data-dept="lang">World Language</button>
         <button class="dept-filter" data-dept="esl">ESL</button>
         <button class="dept-filter" data-dept="sped">Special Education</button>
         <button class="dept-filter" data-dept="arts">Arts and Music</button>
-        <button class="dept-filter" data-dept="pe">Physical Education</button>
+        <button class="dept-filter" data-dept="health">Health and PE</button>
         <button class="dept-filter" data-dept="career">Career Readiness</button>
       </div>
     </div>
@@ -288,51 +275,86 @@
       <div class="dept-section" data-dept="guidance">
         <div class="dept-title">
           Guidance and Support
-          <span class="dept-count">6 staff members</span>
+          <span class="dept-count">8 staff members</span>
         </div>
         <div class="staff-grid">
-          <div class="staff-card" data-name="school counselor" data-role="school counselor">
+
+          <div class="staff-card" data-name="shree kissoon" data-role="school counselor guidance counselling">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>School Counselor</h4>
-              <span class="staff-role">Guidance and Support</span>
+              <h4>Shree Kissoon</h4>
+              <span class="staff-role">School Counselor</span>
+              <span class="staff-ext">ext. 4320</span>
+              <a class="staff-contact" href="mailto:skissoon@northsidechs.org">skissoon@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="college counselor" data-role="college counselor">
+
+          <div class="staff-card" data-name="wendy galeano diaz" data-role="college counselor guidance college">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>College Counselor</h4>
-              <span class="staff-role">Guidance and Support</span>
+              <h4>Wendy Galeano Diaz</h4>
+              <span class="staff-role">College Counselor</span>
+              <span class="staff-ext">ext. 4133</span>
+              <a class="staff-contact" href="mailto:wdiaz@northsidechs.org">wdiaz@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="dean of student experience" data-role="dean">
+
+          <div class="staff-card" data-name="charles jenkins" data-role="dean of student experience student services">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Dean of Student Experience</h4>
-              <span class="staff-role">Guidance and Support</span>
+              <h4>Charles Jenkins</h4>
+              <span class="staff-role">Dean of Student Experience</span>
+              <span class="staff-ext">ext. 4317</span>
+              <a class="staff-contact" href="mailto:cjenkins@northsidechs.org">cjenkins@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="director of student life" data-role="student life">
+
+          <div class="staff-card" data-name="ashanti blackman" data-role="director of student life community engagement">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Director of Student Life</h4>
-              <span class="staff-role">Guidance and Support</span>
+              <h4>Ashanti Blackman</h4>
+              <span class="staff-role">Director of Student Life and Community Engagement</span>
+              <span class="staff-ext">ext. 4072</span>
+              <a class="staff-contact" href="mailto:ablackman@northsidechs.org">ablackman@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="attendance manager" data-role="attendance">
+
+          <div class="staff-card" data-name="christian stanley" data-role="attendance enrollment manager">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Attendance Manager</h4>
-              <span class="staff-role">Guidance and Support</span>
+              <h4>Christian Stanley</h4>
+              <span class="staff-role">Attendance and Enrollment Manager</span>
+              <a class="staff-contact" href="mailto:cstanley@northsidechs.org">cstanley@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="community engagement coordinator" data-role="community">
+
+          <div class="staff-card" data-name="jacob perez" data-role="community engagement coordinator">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Community Engagement Coordinator</h4>
-              <span class="staff-role">Guidance and Support</span>
+              <h4>Jacob Perez</h4>
+              <span class="staff-role">Community Engagement Coordinator</span>
+              <a class="staff-contact" href="mailto:jperez@northsidechs.org">jperez@northsidechs.org</a>
             </div>
           </div>
+
+          <div class="staff-card" data-name="robert smith" data-role="director of guidance and strategy">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Robert Smith</h4>
+              <span class="staff-role">Director of Guidance and Strategy</span>
+              <span class="staff-ext">ext. 4114</span>
+              <a class="staff-contact" href="mailto:rsmith@northsidechs.org">rsmith@northsidechs.org</a>
+            </div>
+          </div>
+
+          <div class="staff-card" data-name="kaitlyn rosario" data-role="school aide">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Kaitlyn Rosario</h4>
+              <span class="staff-role">School Aide</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -340,37 +362,59 @@
       <div class="dept-section" data-dept="math">
         <div class="dept-title">
           Mathematics
-          <span class="dept-count">Department</span>
+          <span class="dept-count">5 staff members</span>
         </div>
         <div class="staff-grid">
-          <div class="staff-card" data-name="math academic director" data-role="academic director mathematics">
+
+          <div class="staff-card" data-name="joseph tadros" data-role="academic director math mathematics">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Academic Director, Mathematics</h4>
-              <span class="staff-role">Mathematics</span>
+              <h4>Joseph Tadros</h4>
+              <span class="staff-role">Academic Director of Math</span>
+              <span class="staff-ext">ext. 4183</span>
+              <a class="staff-contact" href="mailto:jtadros@northsidechs.org">jtadros@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="mathematics teacher" data-role="math teacher">
+
+          <div class="staff-card" data-name="bryan kohut" data-role="math teacher mathematics">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Mathematics Teacher</h4>
-              <span class="staff-role">Mathematics</span>
+              <h4>Bryan Kohut</h4>
+              <span class="staff-role">Math Teacher</span>
+              <span class="staff-ext">ext. 4334</span>
+              <a class="staff-contact" href="mailto:bkohut@northsidechs.org">bkohut@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="mathematics teacher" data-role="math teacher">
+
+          <div class="staff-card" data-name="nicolas roye" data-role="math teacher mathematics">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Mathematics Teacher</h4>
-              <span class="staff-role">Mathematics</span>
+              <h4>Nicolas Roye</h4>
+              <span class="staff-role">Math Teacher</span>
+              <span class="staff-ext">ext. 4163</span>
+              <a class="staff-contact" href="mailto:nroye@northsidechs.org">nroye@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="mathematics teacher" data-role="math teacher">
+
+          <div class="staff-card" data-name="jonah wolfson" data-role="math teacher mathematics">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Mathematics Teacher</h4>
-              <span class="staff-role">Mathematics</span>
+              <h4>Jonah Wolfson</h4>
+              <span class="staff-role">Math Teacher</span>
+              <span class="staff-ext">ext. 4335</span>
+              <a class="staff-contact" href="mailto:jwolfson@northsidechs.org">jwolfson@northsidechs.org</a>
             </div>
           </div>
+
+          <div class="staff-card" data-name="jacqueline kahn" data-role="math teacher mathematics">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Jacqueline Kahn</h4>
+              <span class="staff-role">Math Teacher</span>
+              <span class="staff-ext">ext. 4150</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -378,37 +422,67 @@
       <div class="dept-section" data-dept="english">
         <div class="dept-title">
           English and ELA
-          <span class="dept-count">Department</span>
+          <span class="dept-count">6 staff members</span>
         </div>
         <div class="staff-grid">
-          <div class="staff-card" data-name="humanities academic director" data-role="academic director humanities">
+
+          <div class="staff-card" data-name="mckeith cordell" data-role="academic director humanities english ela">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Academic Director, Humanities</h4>
-              <span class="staff-role">English and ELA</span>
+              <h4>McKeith Cordell</h4>
+              <span class="staff-role">Academic Director of Humanities</span>
             </div>
           </div>
-          <div class="staff-card" data-name="english teacher" data-role="english teacher ela">
+
+          <div class="staff-card" data-name="joseph wright" data-role="ela teacher english language arts">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>English Teacher</h4>
-              <span class="staff-role">English and ELA</span>
+              <h4>Joseph Wright</h4>
+              <span class="staff-role">ELA Teacher</span>
+              <span class="staff-ext">ext. 4155</span>
+              <a class="staff-contact" href="mailto:jwright@northsidechs.org">jwright@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="english teacher" data-role="english teacher ela">
+
+          <div class="staff-card" data-name="kailey mcelhiney" data-role="english teacher ela">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>English Teacher</h4>
-              <span class="staff-role">English and ELA</span>
+              <h4>Kailey McElhiney</h4>
+              <span class="staff-role">English Teacher</span>
+              <span class="staff-ext">ext. 4340</span>
+              <a class="staff-contact" href="mailto:kmcelhiney@northsidechs.org">kmcelhiney@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="english teacher" data-role="english teacher ela">
+
+          <div class="staff-card" data-name="anna limontes-salisbury" data-role="ela teacher english language arts">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>English Teacher</h4>
-              <span class="staff-role">English and ELA</span>
+              <h4>Anna Limontes-Salisbury</h4>
+              <span class="staff-role">ELA Teacher</span>
+              <span class="staff-ext">ext. 4121</span>
+              <a class="staff-contact" href="mailto:asalisbury@northsidechs.org">asalisbury@northsidechs.org</a>
             </div>
           </div>
+
+          <div class="staff-card" data-name="darcy ames" data-role="english teacher ela">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Darcy Ames</h4>
+              <span class="staff-role">English Teacher</span>
+              <span class="staff-ext">ext. 4182</span>
+              <a class="staff-contact" href="mailto:dames@northsidechs.org">dames@northsidechs.org</a>
+            </div>
+          </div>
+
+          <div class="staff-card" data-name="donald wallace" data-role="humanities teacher english">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Donald Wallace</h4>
+              <span class="staff-role">Humanities Teacher</span>
+              <a class="staff-contact" href="mailto:dwallace@northsidechs.org">dwallace@northsidechs.org</a>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -416,61 +490,78 @@
       <div class="dept-section" data-dept="science">
         <div class="dept-title">
           Science
-          <span class="dept-count">Department</span>
+          <span class="dept-count">2 staff members</span>
         </div>
         <div class="staff-grid">
-          <div class="staff-card" data-name="science academic director" data-role="academic director science">
+
+          <div class="staff-card" data-name="rosella tarallo" data-role="academic director science">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Academic Director, Science</h4>
-              <span class="staff-role">Science</span>
+              <h4>Rosella Tarallo</h4>
+              <span class="staff-role">Academic Director of Science</span>
+              <span class="staff-ext">ext. 4176</span>
+              <a class="staff-contact" href="mailto:rtarallo@northsidechs.org">rtarallo@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="science teacher" data-role="science teacher">
+
+          <div class="staff-card" data-name="ying chen" data-role="science teacher">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Science Teacher</h4>
-              <span class="staff-role">Science</span>
+              <h4>Ying Chen</h4>
+              <span class="staff-role">Science Teacher</span>
+              <span class="staff-ext">ext. 4109</span>
+              <a class="staff-contact" href="mailto:ychen@northsidechs.org">ychen@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="science teacher" data-role="science teacher">
-            <div class="staff-photo"><div class="img-placeholder"></div></div>
-            <div class="staff-info">
-              <h4>Science Teacher</h4>
-              <span class="staff-role">Science</span>
-            </div>
-          </div>
+
         </div>
       </div>
 
-      <!-- Social Studies -->
+      <!-- Social Studies and History -->
       <div class="dept-section" data-dept="social">
         <div class="dept-title">
-          Social Studies
-          <span class="dept-count">Department</span>
+          Social Studies and History
+          <span class="dept-count">2 staff members</span>
         </div>
         <div class="staff-grid">
-          <div class="staff-card" data-name="social studies teacher" data-role="social studies teacher">
+
+          <div class="staff-card" data-name="tiffany reid" data-role="social studies teacher">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Social Studies Teacher</h4>
-              <span class="staff-role">Social Studies</span>
+              <h4>Tiffany Reid</h4>
+              <span class="staff-role">Social Studies Teacher</span>
+              <span class="staff-ext">ext. 4150</span>
+              <a class="staff-contact" href="mailto:treid@northsidechs.org">treid@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="social studies teacher" data-role="social studies teacher">
+
+          <div class="staff-card" data-name="emerson pardales" data-role="history teacher social studies">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Social Studies Teacher</h4>
-              <span class="staff-role">Social Studies</span>
+              <h4>Emerson Pardales</h4>
+              <span class="staff-role">History Teacher</span>
             </div>
           </div>
-          <div class="staff-card" data-name="social studies teacher" data-role="social studies teacher">
+
+        </div>
+      </div>
+
+      <!-- World Language -->
+      <div class="dept-section" data-dept="lang">
+        <div class="dept-title">
+          World Language
+          <span class="dept-count">1 staff member</span>
+        </div>
+        <div class="staff-grid">
+
+          <div class="staff-card" data-name="gabriel ancira" data-role="spanish teacher world language">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Social Studies Teacher</h4>
-              <span class="staff-role">Social Studies</span>
+              <h4>Gabriel Ancira</h4>
+              <span class="staff-role">Spanish Teacher</span>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -478,23 +569,20 @@
       <div class="dept-section" data-dept="esl">
         <div class="dept-title">
           ESL
-          <span class="dept-count">Department</span>
+          <span class="dept-count">1 staff member</span>
         </div>
         <div class="staff-grid">
-          <div class="staff-card" data-name="esl teacher" data-role="esl teacher english language learner">
+
+          <div class="staff-card" data-name="rim rouissi" data-role="esl teacher english language learner">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>ESL Teacher</h4>
-              <span class="staff-role">ESL</span>
+              <h4>Rim Rouissi</h4>
+              <span class="staff-role">ESL Teacher</span>
+              <span class="staff-ext">ext. 4174</span>
+              <a class="staff-contact" href="mailto:rrouissi@northsidechs.org">rrouissi@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="esl teacher" data-role="esl teacher english language learner">
-            <div class="staff-photo"><div class="img-placeholder"></div></div>
-            <div class="staff-info">
-              <h4>ESL Teacher</h4>
-              <span class="staff-role">ESL</span>
-            </div>
-          </div>
+
         </div>
       </div>
 
@@ -502,30 +590,57 @@
       <div class="dept-section" data-dept="sped">
         <div class="dept-title">
           Special Education
-          <span class="dept-count">Department</span>
+          <span class="dept-count">5 staff members</span>
         </div>
         <div class="staff-grid">
-          <div class="staff-card" data-name="special education teacher" data-role="special education sped iep">
+
+          <div class="staff-card" data-name="carly baumgarten" data-role="special education teacher sped iep">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Special Education Teacher</h4>
-              <span class="staff-role">Special Education</span>
+              <h4>Carly Baumgarten</h4>
+              <span class="staff-role">Special Education Teacher</span>
+              <span class="staff-ext">ext. 4137</span>
+              <a class="staff-contact" href="mailto:cbaumgarten@northsidechs.org">cbaumgarten@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="special education teacher" data-role="special education sped iep">
+
+          <div class="staff-card" data-name="dolores charite" data-role="special education teacher sped iep">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Special Education Teacher</h4>
-              <span class="staff-role">Special Education</span>
+              <h4>Dolores Charite</h4>
+              <span class="staff-role">Special Education Teacher</span>
+              <span class="staff-ext">ext. 4200</span>
+              <a class="staff-contact" href="mailto:dcharite@northsidechs.org">dcharite@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="special education liaison" data-role="special education liaison sped">
+
+          <div class="staff-card" data-name="yurvana mustafayeva" data-role="special education teacher sped iep">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Special Education Liaison</h4>
-              <span class="staff-role">Special Education</span>
+              <h4>Yurvana Mustafayeva</h4>
+              <span class="staff-role">Special Education Teacher</span>
+              <span class="staff-ext">ext. 4189</span>
+              <a class="staff-contact" href="mailto:ymustafayeva@northsidechs.org">ymustafayeva@northsidechs.org</a>
             </div>
           </div>
+
+          <div class="staff-card" data-name="rosa otero" data-role="sped liaison special education">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Rosa Otero</h4>
+              <span class="staff-role">SPED Liaison</span>
+              <a class="staff-contact" href="mailto:rotero@northsidechs.org">rotero@northsidechs.org</a>
+            </div>
+          </div>
+
+          <div class="staff-card" data-name="maher nigar" data-role="special education teacher sped">
+            <div class="staff-photo"><div class="img-placeholder"></div></div>
+            <div class="staff-info">
+              <h4>Maher Nigar</h4>
+              <span class="staff-role">Special Education Teacher</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -533,47 +648,59 @@
       <div class="dept-section" data-dept="arts">
         <div class="dept-title">
           Arts and Music
-          <span class="dept-count">Department</span>
+          <span class="dept-count">2 staff members</span>
         </div>
         <div class="staff-grid">
-          <div class="staff-card" data-name="arts teacher" data-role="arts teacher visual arts">
+
+          <div class="staff-card" data-name="julia wess" data-role="art teacher arts">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Arts Teacher</h4>
-              <span class="staff-role">Arts and Music</span>
+              <h4>Julia Wess</h4>
+              <span class="staff-role">Art Teacher</span>
+              <span class="staff-ext">ext. 4316</span>
+              <a class="staff-contact" href="mailto:jwess@northsidechs.org">jwess@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="music teacher" data-role="music teacher">
+
+          <div class="staff-card" data-name="kolby koczanowski" data-role="music teacher arts">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Music Teacher</h4>
-              <span class="staff-role">Arts and Music</span>
+              <h4>Kolby Koczanowski</h4>
+              <span class="staff-role">Music Teacher</span>
             </div>
           </div>
+
         </div>
       </div>
 
-      <!-- Physical Education -->
-      <div class="dept-section" data-dept="pe">
+      <!-- Health and PE -->
+      <div class="dept-section" data-dept="health">
         <div class="dept-title">
-          Physical Education
-          <span class="dept-count">Department</span>
+          Health and Physical Education
+          <span class="dept-count">2 staff members</span>
         </div>
         <div class="staff-grid">
-          <div class="staff-card" data-name="physical education teacher" data-role="pe teacher physical education athletics">
+
+          <div class="staff-card" data-name="iwona bebenista" data-role="health teacher physical education">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Physical Education Teacher</h4>
-              <span class="staff-role">Physical Education</span>
+              <h4>Iwona Bebenista</h4>
+              <span class="staff-role">Health Teacher</span>
+              <span class="staff-ext">ext. 4186</span>
+              <a class="staff-contact" href="mailto:ibebenista@northsidechs.org">ibebenista@northsidechs.org</a>
             </div>
           </div>
-          <div class="staff-card" data-name="physical education teacher" data-role="pe teacher physical education athletics">
+
+          <div class="staff-card" data-name="arsenia fuentes" data-role="physical education teacher pe">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Physical Education Teacher</h4>
-              <span class="staff-role">Physical Education</span>
+              <h4>Arsenia Fuentes</h4>
+              <span class="staff-role">Physical Education Teacher</span>
+              <span class="staff-ext">ext. 4333</span>
+              <a class="staff-contact" href="mailto:afuentes@northsidechs.org">afuentes@northsidechs.org</a>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -581,23 +708,18 @@
       <div class="dept-section" data-dept="career">
         <div class="dept-title">
           Career Readiness
-          <span class="dept-count">Department</span>
+          <span class="dept-count">1 staff member</span>
         </div>
         <div class="staff-grid">
-          <div class="staff-card" data-name="career readiness teacher" data-role="career readiness internship pathway">
+
+          <div class="staff-card" data-name="lawrence dunlap" data-role="career readiness teacher internship pathway">
             <div class="staff-photo"><div class="img-placeholder"></div></div>
             <div class="staff-info">
-              <h4>Career Readiness Teacher</h4>
-              <span class="staff-role">Career Readiness</span>
+              <h4>Lawrence Dunlap</h4>
+              <span class="staff-role">Career Readiness Teacher</span>
             </div>
           </div>
-          <div class="staff-card" data-name="healthcare pathway instructor" data-role="healthcare pathway career readiness">
-            <div class="staff-photo"><div class="img-placeholder"></div></div>
-            <div class="staff-info">
-              <h4>Healthcare Pathway Instructor</h4>
-              <span class="staff-role">Career Readiness</span>
-            </div>
-          </div>
+
         </div>
       </div>
 
@@ -654,13 +776,11 @@
   </footer>
 
   <script>
-    // Navbar scroll
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
     });
 
-    // Department filter
     const filters = document.querySelectorAll('.dept-filter');
     const deptSections = document.querySelectorAll('.dept-section');
 
@@ -668,7 +788,6 @@
       btn.addEventListener('click', () => {
         filters.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
         const selected = btn.dataset.dept;
         deptSections.forEach(section => {
           if (selected === 'all' || section.dataset.dept === selected) {
@@ -677,13 +796,10 @@
             section.classList.add('hidden');
           }
         });
-
-        // Re-run search against new visible sections
         filterBySearch(document.getElementById('search-input').value);
       });
     });
 
-    // Search filter
     function filterBySearch(query) {
       const q = query.toLowerCase().trim();
       const allCards = document.querySelectorAll('.staff-card');
@@ -692,11 +808,9 @@
       allCards.forEach(card => {
         const section = card.closest('.dept-section');
         if (section && section.classList.contains('hidden')) return;
-
         const name = (card.dataset.name || '').toLowerCase();
         const role = (card.dataset.role || '').toLowerCase();
         const matches = !q || name.includes(q) || role.includes(q);
-
         card.classList.toggle('hidden', !matches);
         if (matches) anyVisible = true;
       });
