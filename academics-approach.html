@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Approach · Northside Charter High School · Brooklyn, NY</title>
+  <meta name="description" content="Learn how Northside Charter High School approaches teaching, learning, and student development through data-driven, student-centered instruction.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .approach-intro {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .approach-intro .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .approach-intro p {
+      font-size: 1.05rem;
+      color: #5a5a6a;
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .approach-pillars {
+      background: var(--purple);
+      padding: 100px 0;
+    }
+
+    .approach-pillars .section-label { color: rgba(255,255,255,0.5); }
+    .approach-pillars .section-title { color: var(--white); margin-bottom: 12px; }
+    .approach-pillars .section-sub { color: rgba(255,255,255,0.7); margin-bottom: 56px; }
+
+    .pillars-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+    }
+
+    .pillar-item {
+      background: rgba(255,255,255,0.06);
+      padding: 36px 32px;
+      transition: background var(--transition);
+    }
+
+    .pillar-item:hover { background: rgba(255,255,255,0.1); }
+
+    .pillar-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--violet);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .pillar-item h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .pillar-item p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+    }
+
+    .approach-model {
+      padding: 100px 0;
+      background: var(--off-white);
+    }
+
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .model-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 36px;
+      border-left: 4px solid var(--violet);
+    }
+
+    .model-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 10px;
+    }
+
+    .model-card p {
+      font-size: 0.92rem;
+      color: #5a5a6a;
+      line-height: 1.7;
+    }
+
+    .approach-cta {
+      background: var(--white);
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .approach-cta h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--purple);
+      margin-bottom: 16px;
+    }
+
+    .approach-cta p {
+      font-size: 1rem;
+      color: #5a5a6a;
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 768px) {
+      .approach-intro .container { grid-template-columns: 1fr; gap: 40px; }
+      .pillars-list { grid-template-columns: 1fr; }
+      .model-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo-northside.png" alt="Northside Charter High School">
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a href="about.html">About</a>
+          <ul class="dropdown">
+            <li><a href="about.html">About Northside</a></li>
+            <li><a href="faculty.html">Faculty and Staff</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="academics-approach.html" class="active">Academics</a>
+          <ul class="dropdown">
+            <li><a href="academics-approach.html">Our Approach</a></li>
+            <li><a href="academics-healthcare.html">Healthcare Pathway</a></li>
+            <li><a href="academics-graduation.html">Graduation Requirements</a></li>
+          </ul>
+        </li>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li>
+          <a href="#">Student Life</a>
+          <ul class="dropdown">
+            <li><a href="#">Athletics</a></li>
+            <li><a href="#">Clubs and Organizations</a></li>
+          </ul>
+        </li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <span class="nav-phone">(347) 390-1273</span>
+        <a href="https://nschs.schoolmint.net/signup" class="btn btn-primary" target="_blank" rel="noopener">Apply Now</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Academics</span>
+      <h1>How We Teach.<br>Why It Works.</h1>
+      <p>
+        Northside's instructional model is built on one conviction: every student can reach college
+        readiness when they are taught with consistency, high expectations, and genuine care.
+      </p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="approach-intro">
+    <div class="container">
+      <div>
+        <span class="section-label">Our Philosophy</span>
+        <h2 class="section-title">Learning That<br>Goes Beyond the Test.</h2>
+      </div>
+      <div>
+        <p>
+          At Northside, we believe that strong academic outcomes come from strong relationships.
+          Our teachers know their students by name, by strength, and by need. That knowledge
+          drives every instructional decision we make.
+        </p>
+        <p>
+          We combine a rigorous, standards-aligned curriculum with culturally responsive pedagogy,
+          meaning our students see themselves in their coursework and connect learning to their lives
+          and communities. Instruction is differentiated so every student is challenged and supported
+          at the right level.
+        </p>
+        <p>
+          Data informs our teaching but does not define our students. We use assessment results
+          to adjust instruction quickly, identify students who need additional support, and ensure
+          no one falls behind without intervention. The goal is mastery, not compliance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIX PILLARS OF INSTRUCTION -->
+  <section class="approach-pillars">
+    <div class="container">
+      <span class="section-label">Instructional Model</span>
+      <h2 class="section-title">Six Pillars of<br>Northside Instruction.</h2>
+      <p class="section-sub">These principles guide every classroom at Northside, from ninth grade through senior year.</p>
+      <div class="pillars-list">
+        <div class="pillar-item">
+          <span class="pillar-num">01</span>
+          <h3>High Expectations for All</h3>
+          <p>Every student at Northside is held to the same high academic standard. We do not lower expectations — we raise support to meet them.</p>
+        </div>
+        <div class="pillar-item">
+          <span class="pillar-num">02</span>
+          <h3>Data-Driven Instruction</h3>
+          <p>Teachers analyze student performance data in weekly collaborative teams to identify trends, adjust pacing, and design targeted interventions before students fall behind.</p>
+        </div>
+        <div class="pillar-item">
+          <span class="pillar-num">03</span>
+          <h3>Culturally Responsive Teaching</h3>
+          <p>Our curriculum connects to the backgrounds, identities, and experiences of Brooklyn students. Students learn better when they see themselves in the material.</p>
+        </div>
+        <div class="pillar-item">
+          <span class="pillar-num">04</span>
+          <h3>Differentiated Support</h3>
+          <p>From enrichment for advanced learners to small-group intervention for students who need more time, instruction is matched to where each student is, not where we wish they were.</p>
+        </div>
+        <div class="pillar-item">
+          <span class="pillar-num">05</span>
+          <h3>Collaborative Teacher Teams</h3>
+          <p>Northside teachers plan together, observe one another, and share what works. Professional learning communities meet weekly across departments to refine instructional practice.</p>
+        </div>
+        <div class="pillar-item">
+          <span class="pillar-num">06</span>
+          <h3>College-Ready Standards</h3>
+          <p>All coursework is aligned to New York State standards with an eye toward college readiness. Regents preparation is embedded throughout — not bolted on at the end.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTRUCTIONAL MODEL -->
+  <section class="approach-model">
+    <div class="container">
+      <span class="section-label">Inside the Classroom</span>
+      <h2 class="section-title">What Learning Looks<br>Like at Northside.</h2>
+      <div class="model-grid">
+        <div class="model-card">
+          <h3>Small Class Sizes</h3>
+          <p>Intentionally small classes allow teachers to call on every student, provide written feedback on every assignment, and build the kind of trust that makes rigorous learning possible. No student is anonymous here.</p>
+        </div>
+        <div class="model-card">
+          <h3>Structured Academic Discourse</h3>
+          <p>Students are taught to read closely, write argumentatively, and discuss ideas with precision. These skills cross every subject area and are essential for college-level work.</p>
+        </div>
+        <div class="model-card">
+          <h3>Intervention and Enrichment</h3>
+          <p>Students who are struggling receive targeted small-group intervention during the school day. Students who are excelling are pushed into deeper work, not just more work.</p>
+        </div>
+        <div class="model-card">
+          <h3>Technology Integration</h3>
+          <p>Students at Northside have access to current technology as a tool for learning, research, and creation. Digital literacy is embedded across the curriculum as a 21st-century skill.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="approach-cta">
+    <div class="container">
+      <span class="section-label">Explore More</span>
+      <h2>See Our Programs in Action.</h2>
+      <p>Learn about our specialized Healthcare Pathway, review graduation requirements, or apply to join Northside for the 2026-2027 school year.</p>
+      <div class="cta-buttons">
+        <a href="academics-healthcare.html" class="btn btn-outline-dark">Healthcare Pathway</a>
+        <a href="academics-graduation.html" class="btn btn-outline-dark">Graduation Requirements</a>
+        <a href="https://nschs.schoolmint.net/signup" class="btn btn-primary" target="_blank" rel="noopener">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/logo-northside.png" alt="Northside Charter High School">
+          <p>A free public charter high school in Brooklyn providing an enriching and innovative learning environment where students achieve postsecondary readiness.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>School</h4>
+          <ul>
+            <li><a href="about.html">About Northside</a></li>
+            <li><a href="academics-approach.html">Academics</a></li>
+            <li><a href="faculty.html">Faculty and Staff</a></li>
+            <li><a href="#">Athletics</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Admissions</h4>
+          <ul>
+            <li><a href="admissions.html">How to Enroll</a></li>
+            <li><a href="admissions.html#open-house">Open House Dates</a></li>
+            <li><a href="#">School Lottery</a></li>
+            <li><a href="#">Family Life Guide</a></li>
+            <li><a href="academics-graduation.html">Graduation Requirements</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li>424 Leonard Street<br>Brooklyn, NY 11222</li>
+            <li>(347) 390-1273</li>
+            <li>familyfeedback@northsidechs.org</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>2026 Northside Charter High School. All rights reserved.</span>
+        <span>Privacy Policy · Accessibility · Non-Discrimination Policy</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  </script>
+
+</body>
+</html>

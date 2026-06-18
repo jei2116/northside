@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graduation Requirements · Northside Charter High School · Brooklyn, NY</title>
+  <meta name="description" content="Learn about Northside Charter High School's graduation requirements, Regents exam expectations, and the path from 9th grade to college acceptance.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .grad-intro {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .grad-intro .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .grad-intro p {
+      font-size: 1.05rem;
+      color: #5a5a6a;
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .diploma-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .diploma-card {
+      border-radius: 14px;
+      padding: 28px 32px;
+      border: 2px solid var(--light-gray);
+    }
+
+    .diploma-card.featured {
+      border-color: var(--violet);
+      background: #f8f5ff;
+    }
+
+    .diploma-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .diploma-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 6px;
+    }
+
+    .diploma-card p {
+      font-size: 0.88rem;
+      color: #6a6a7a;
+      line-height: 1.6;
+    }
+
+    /* Credits */
+    .grad-credits {
+      background: var(--off-white);
+      padding: 100px 0;
+    }
+
+    .credits-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 48px;
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(60,47,89,0.06);
+    }
+
+    .credits-table thead {
+      background: var(--purple);
+    }
+
+    .credits-table thead th {
+      padding: 16px 24px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      text-align: left;
+    }
+
+    .credits-table tbody tr {
+      border-bottom: 1px solid var(--light-gray);
+      transition: background var(--transition);
+    }
+
+    .credits-table tbody tr:last-child { border-bottom: none; }
+    .credits-table tbody tr:hover { background: var(--off-white); }
+
+    .credits-table td {
+      padding: 16px 24px;
+      font-size: 0.92rem;
+      color: var(--charcoal);
+    }
+
+    .credits-table td:first-child { font-weight: 600; color: var(--purple); }
+    .credits-table td:last-child { color: #7a7a8a; font-size: 0.85rem; }
+
+    .credits-total {
+      background: var(--purple) !important;
+    }
+
+    .credits-total td {
+      color: var(--white) !important;
+      font-weight: 700 !important;
+      font-size: 0.95rem !important;
+    }
+
+    /* Regents */
+    .grad-regents {
+      background: var(--white);
+      padding: 100px 0;
+    }
+
+    .regents-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .regents-card {
+      background: var(--off-white);
+      border-radius: 14px;
+      padding: 28px 32px;
+    }
+
+    .regents-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+
+    .regents-card p {
+      font-size: 0.88rem;
+      color: #5a5a6a;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .regents-score {
+      display: inline-block;
+      background: var(--purple);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+
+    /* Northside-specific */
+    .grad-northside {
+      background: var(--purple);
+      padding: 100px 0;
+    }
+
+    .grad-northside .section-label { color: rgba(255,255,255,0.5); }
+    .grad-northside .section-title { color: var(--white); }
+    .grad-northside .section-sub { color: rgba(255,255,255,0.7); margin-bottom: 48px; }
+
+    .ns-reqs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .ns-req {
+      background: rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 32px 28px;
+    }
+
+    .ns-req-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--violet);
+      line-height: 1;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .ns-req h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .ns-req p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* Four year plan CTA */
+    .grad-plan {
+      background: var(--off-white);
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .grad-plan h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--purple);
+      margin-bottom: 16px;
+    }
+
+    .grad-plan p {
+      font-size: 1rem;
+      color: #5a5a6a;
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 768px) {
+      .grad-intro .container { grid-template-columns: 1fr; gap: 40px; }
+      .regents-grid { grid-template-columns: 1fr; }
+      .ns-reqs { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo-northside.png" alt="Northside Charter High School">
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a href="about.html">About</a>
+          <ul class="dropdown">
+            <li><a href="about.html">About Northside</a></li>
+            <li><a href="faculty.html">Faculty and Staff</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="academics-approach.html" class="active">Academics</a>
+          <ul class="dropdown">
+            <li><a href="academics-approach.html">Our Approach</a></li>
+            <li><a href="academics-healthcare.html">Healthcare Pathway</a></li>
+            <li><a href="academics-graduation.html">Graduation Requirements</a></li>
+          </ul>
+        </li>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li>
+          <a href="#">Student Life</a>
+          <ul class="dropdown">
+            <li><a href="#">Athletics</a></li>
+            <li><a href="#">Clubs and Organizations</a></li>
+          </ul>
+        </li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <span class="nav-phone">(347) 390-1273</span>
+        <a href="https://nschs.schoolmint.net/signup" class="btn btn-primary" target="_blank" rel="noopener">Apply Now</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Academics</span>
+      <h1>Graduation<br>Requirements.</h1>
+      <p>
+        Every Northside student has a clear path to graduation. Here is exactly what it takes
+        to earn your diploma, pass your Regents exams, and walk across that stage.
+      </p>
+    </div>
+  </section>
+
+  <!-- INTRO + DIPLOMA TYPES -->
+  <section class="grad-intro">
+    <div class="container">
+      <div>
+        <span class="section-label">Diplomas</span>
+        <h2 class="section-title">Your Diploma<br>Options.</h2>
+        <p>
+          Northside students graduate with a New York State Regents Diploma. Students who meet
+          higher exam score thresholds and additional course requirements earn an Advanced Regents
+          Diploma, which strengthens college applications and may qualify students for advanced
+          placement in college coursework.
+        </p>
+        <p>
+          All Northside graduates also leave with a confirmed college acceptance. That is not a
+          hope — it is a school-wide commitment backed by our college counseling program and
+          four-year support structure.
+        </p>
+      </div>
+      <div class="diploma-cards">
+        <div class="diploma-card featured">
+          <span class="diploma-label">Standard Track</span>
+          <h3>NYS Regents Diploma</h3>
+          <p>65 or higher on required Regents exams. Minimum 22 credits across core subject areas. Required for all Northside graduates.</p>
+        </div>
+        <div class="diploma-card">
+          <span class="diploma-label">Advanced Track</span>
+          <h3>Advanced Regents Diploma</h3>
+          <p>65 or higher on all required Regents exams plus additional math and science exams. Recommended for students pursuing competitive colleges or STEM programs.</p>
+        </div>
+        <div class="diploma-card">
+          <span class="diploma-label">Northside Guarantee</span>
+          <h3>College Acceptance</h3>
+          <p>Every Northside graduate has a confirmed college acceptance before graduation day. This is a condition of completion, not just a goal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDIT REQUIREMENTS -->
+  <section class="grad-credits">
+    <div class="container">
+      <span class="section-label">Credit Requirements</span>
+      <h2 class="section-title">22 Credits.<br>Four Years.</h2>
+      <p class="section-sub">New York State requires a minimum of 22 credits for graduation. Northside structures these credits across four years to keep every student on track.</p>
+      <table class="credits-table">
+        <thead>
+          <tr>
+            <th>Subject Area</th>
+            <th>Credits Required</th>
+            <th>Courses</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>English Language Arts</td>
+            <td>4 credits</td>
+            <td>ELA 9, ELA 10, ELA 11, ELA 12</td>
+          </tr>
+          <tr>
+            <td>Social Studies</td>
+            <td>4 credits</td>
+            <td>Global History I &amp; II, US History, Government</td>
+          </tr>
+          <tr>
+            <td>Mathematics</td>
+            <td>3 credits</td>
+            <td>Algebra I, Geometry, Algebra II / Pre-Calculus</td>
+          </tr>
+          <tr>
+            <td>Science</td>
+            <td>3 credits</td>
+            <td>Living Environment, Earth Science or Chemistry, elective</td>
+          </tr>
+          <tr>
+            <td>Languages Other Than English</td>
+            <td>1 credit</td>
+            <td>Spanish I or equivalent</td>
+          </tr>
+          <tr>
+            <td>The Arts</td>
+            <td>1 credit</td>
+            <td>Visual Art, Music, or equivalent</td>
+          </tr>
+          <tr>
+            <td>Health</td>
+            <td>0.5 credits</td>
+            <td>Health Education</td>
+          </tr>
+          <tr>
+            <td>Physical Education</td>
+            <td>2 credits</td>
+            <td>PE (every semester, 9-12)</td>
+          </tr>
+          <tr>
+            <td>Electives</td>
+            <td>3.5 credits</td>
+            <td>Includes Healthcare Pathway, Career Readiness, and others</td>
+          </tr>
+          <tr class="credits-total">
+            <td>Total</td>
+            <td>22 credits</td>
+            <td>Minimum required for NYS Regents Diploma</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- REGENTS EXAMS -->
+  <section class="grad-regents">
+    <div class="container">
+      <span class="section-label">Regents Exams</span>
+      <h2 class="section-title">State Exams<br>You Need to Pass.</h2>
+      <p class="section-sub">New York State requires passing scores on five Regents exams for a standard Regents Diploma. Northside prepares students for these exams throughout the year, not just in the weeks before.</p>
+      <div class="regents-grid">
+        <div class="regents-card">
+          <h4>English Language Arts (ELA)</h4>
+          <p>Taken at the end of Grade 11. Tests reading, writing, and analytical skills across literary and informational texts.</p>
+          <span class="regents-score">Passing: 65+</span>
+        </div>
+        <div class="regents-card">
+          <h4>Algebra I (or higher)</h4>
+          <p>Most students take this at the end of Grade 9. Students pursuing the Advanced Diploma also take Algebra II and Geometry Regents.</p>
+          <span class="regents-score">Passing: 65+</span>
+        </div>
+        <div class="regents-card">
+          <h4>Global History and Geography II</h4>
+          <p>Taken at the end of Grade 10. Covers world history from 1750 to the present with a focus on document-based analysis.</p>
+          <span class="regents-score">Passing: 65+</span>
+        </div>
+        <div class="regents-card">
+          <h4>United States History and Government</h4>
+          <p>Taken at the end of Grade 11. Covers American history from the colonial period to the present, including document-based questions.</p>
+          <span class="regents-score">Passing: 65+</span>
+        </div>
+        <div class="regents-card">
+          <h4>Science (Living Environment or Physical)</h4>
+          <p>Living Environment is taken by most students in Grade 9 or 10. Students on the Advanced track also complete a physical science Regents.</p>
+          <span class="regents-score">Passing: 65+</span>
+        </div>
+        <div class="regents-card">
+          <h4>Retakes and Support</h4>
+          <p>Students who do not pass on the first attempt receive targeted intervention and may retake any Regents exam in January, June, or August.</p>
+          <span class="regents-score">Full support provided</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NORTHSIDE-SPECIFIC REQUIREMENTS -->
+  <section class="grad-northside">
+    <div class="container">
+      <span class="section-label">Northside Requirements</span>
+      <h2 class="section-title">Beyond the State.<br>The Northside Standard.</h2>
+      <p class="section-sub">In addition to state requirements, Northside has three school-wide graduation requirements that distinguish our graduates.</p>
+      <div class="ns-reqs">
+        <div class="ns-req">
+          <span class="ns-req-num">01</span>
+          <h4>Confirmed College Acceptance</h4>
+          <p>Every student must have a confirmed acceptance to a two-year or four-year college or university before graduation. Our college counselor works with each student individually to make this happen.</p>
+        </div>
+        <div class="ns-req">
+          <span class="ns-req-num">02</span>
+          <h4>Senior Internship</h4>
+          <p>All seniors complete a supervised internship with a partner organization in Brooklyn or New York City. This experience is documented and may fulfill the Career Readiness elective credit.</p>
+        </div>
+        <div class="ns-req">
+          <span class="ns-req-num">03</span>
+          <h4>Senior Portfolio and Presentation</h4>
+          <p>Seniors present a portfolio of their four-year academic journey to a panel of teachers and community members. This culminating experience reinforces communication skills and college readiness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="grad-plan">
+    <div class="container">
+      <span class="section-label">Start Now</span>
+      <h2>Begin Your Path to Graduation.</h2>
+      <p>The best time to start planning for graduation is before high school begins. Apply to Northside now and work with our team from day one to build a four-year plan that ends with a diploma and a college acceptance.</p>
+      <div class="cta-buttons">
+        <a href="admissions.html" class="btn btn-outline-dark">How to Apply</a>
+        <a href="academics-approach.html" class="btn btn-outline-dark">Our Approach</a>
+        <a href="https://nschs.schoolmint.net/signup" class="btn btn-primary" target="_blank" rel="noopener">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/logo-northside.png" alt="Northside Charter High School">
+          <p>A free public charter high school in Brooklyn providing an enriching and innovative learning environment where students achieve postsecondary readiness.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>School</h4>
+          <ul>
+            <li><a href="about.html">About Northside</a></li>
+            <li><a href="academics-approach.html">Academics</a></li>
+            <li><a href="faculty.html">Faculty and Staff</a></li>
+            <li><a href="#">Athletics</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Admissions</h4>
+          <ul>
+            <li><a href="admissions.html">How to Enroll</a></li>
+            <li><a href="admissions.html#open-house">Open House Dates</a></li>
+            <li><a href="#">School Lottery</a></li>
+            <li><a href="#">Family Life Guide</a></li>
+            <li><a href="academics-graduation.html">Graduation Requirements</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li>424 Leonard Street<br>Brooklyn, NY 11222</li>
+            <li>(347) 390-1273</li>
+            <li>familyfeedback@northsidechs.org</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>2026 Northside Charter High School. All rights reserved.</span>
+        <span>Privacy Policy · Accessibility · Non-Discrimination Policy</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  </script>
+
+</body>
+</html>
